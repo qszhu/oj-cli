@@ -1,0 +1,6 @@
+- [ ] configurable puppeteer proxy
+- [ ] debug crawler as cmd option
+- [ ] DRY web operations
+- [ ] compiler variations
+  - [ ] esbuild nodejs target
+  - [ ] cpp standard
