@@ -2,7 +2,7 @@ import { convert } from "html-to-text";
 import Site from ".";
 import Config from "../config";
 import { extractInfo, newPage, submitFormForCookies } from "../lib/crawler";
-import project from "../project";
+import Project from "../project";
 import { Language, Problem } from "../types";
 import BaseSite from "./BaseSite";
 
@@ -84,7 +84,7 @@ export default class AtCoder extends BaseSite implements Site {
     return new Problem(problemId, textContent, tests)
   }
 
-  async submit(problemId: string, project: project) {
+  async submit(problemId: string, project: Project) {
     const [contestId] = splitProblemId(problemId)
     const selectSel = 'select'
     const uploadSel = 'input[id=input-open-file][type=file]'

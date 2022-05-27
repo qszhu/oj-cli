@@ -2,7 +2,7 @@ import { convert } from "html-to-text";
 import Site from ".";
 import Config from "../config";
 import { extractInfo, newPage, newPageForCookies } from "../lib/crawler";
-import project from "../project";
+import Project from "../project";
 import { Language, Problem } from "../types";
 import BaseSite from "./BaseSite";
 
@@ -71,7 +71,7 @@ export default class Kattis extends BaseSite implements Site {
     return new Problem(problemId, textContent, tests)
   }
 
-  async submit(problemId: string, project: project) {
+  async submit(problemId: string, project: Project) {
     const selectSel = 'input[id=language_select]'
     const uploadSel = 'input[id=sub_files_input][type=file]'
     const submitSel = 'input[type=submit][value=Submit]'
