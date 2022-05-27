@@ -10,26 +10,26 @@
 
 # Supported Sites
 
--[x] AtCoder
--[x] CodeForces
--[x] Kattis
--[ ] UVa
--[ ] POJ
--[ ] 洛谷
+- [x] AtCoder
+- [x] CodeForces
+- [x] Kattis
+- [ ] UVa
+- [ ] POJ
+- [ ] 洛谷
 
 # Supported Languages
 
--[x] TypeScript
--[x] Kotlin
--[x] C++
--[ ] Python
--[ ] Go
--[ ] Java
--[ ] Rust
--[ ] Dart
--[ ] Haskell
--[ ] OCaml
--[ ] Elixir
+- [x] TypeScript
+- [x] Kotlin
+- [x] C++
+- [ ] Python
+- [ ] Go
+- [ ] Java
+- [ ] Rust
+- [ ] Dart
+- [ ] Haskell
+- [ ] OCaml
+- [ ] Elixir
 
 # Install
 
