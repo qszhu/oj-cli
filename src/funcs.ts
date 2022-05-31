@@ -7,6 +7,7 @@ import TypeScript from "./project/TypeScript"
 import Site from "./site"
 import AtCoder from "./site/AtCoder"
 import CodeForces from "./site/CodeForces"
+import CSES from "./site/CSES"
 import Kattis from "./site/Kattis"
 import { Language } from "./types"
 
@@ -15,6 +16,7 @@ export function getSite(config: Config) {
   if (siteName === 'atcoder') return new AtCoder(config)
   if (siteName === 'codeforces') return new CodeForces(config)
   if (siteName === 'kattis') return new Kattis(config)
+  if (siteName === 'cses') return new CSES(config)
   throw new Error(`unsupported site ${siteName}`)
 }
 

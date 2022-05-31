@@ -2,26 +2,26 @@
 
 * Node.js >= v14.1
 
-## Required Compilers
-
-* C++: g++
-* Kotlin: kotlinc
-* TypeScript: esbuild
-
-# Supported Sites
+# Supported Sites and Referenced Guide Books
 
 - [x] AtCoder
 - [x] CodeForces
 - [x] Kattis
+  * Johan Sannemo, *Principles of Algorithmic Problem Solving*
+- [ ] CSES
+  * Antti Laaksonen, *Guide to Competitive Programming*
 - [ ] UVa
 - [ ] POJ
 - [ ] 洛谷
 
-# Supported Languages
+# Supported Languages and Required Compilers
 
 - [x] TypeScript
+  * `esbuild`
 - [x] Kotlin
+  * `kotlinc`
 - [x] C++
+  * `g++`
 - [ ] Python
 - [ ] Go
 - [ ] Java

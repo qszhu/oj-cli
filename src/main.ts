@@ -13,13 +13,13 @@ async function main() {
   const [cmd, param] = argv._
 
   if (argv.site) {
-    config.site = argv.site as string
+    config.site = String(argv.site)
   }
   if (param) {
-    config.problemId = param as string
+    config.problemId = String(param)
   }
   if (argv.lang) {
-    config.language = argv.lang as string
+    config.language = String(argv.lang)
   }
 
   if (!config.site) config.site = await prompt.promptSite()
@@ -29,7 +29,6 @@ async function main() {
   const site = funcs.getSite(config)
   const lang = funcs.getLang(config)
   const problemId = config.problemId
-
 
   if (cmd === 'new') {
     await prompt.confirm(site, problemId, lang)
