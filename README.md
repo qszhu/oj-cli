@@ -8,7 +8,7 @@
 - [x] CodeForces
 - [x] Kattis
   * Johan Sannemo, *Principles of Algorithmic Problem Solving*
-- [ ] CSES
+- [x] CSES
   * Antti Laaksonen, *Guide to Competitive Programming*
 - [ ] UVa
 - [ ] POJ
