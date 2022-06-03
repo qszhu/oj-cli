@@ -41,9 +41,10 @@ export default class Cpp extends BaseProject implements Project {
 const TMPL = `
 #include <iostream>
 #include <iomanip>
+#include <cstdio>
 #include <set>
-#include <cmath>
 #include <vector>
+#include <cmath>
 using namespace std;
 
 #define rep(i, a, b) for (int i = a; i < (b); ++i)
@@ -55,7 +56,9 @@ typedef long long ll;
 typedef pair<int, int> pii;
 typedef vector<int> vi;
 
-int solve(int n) {
+int n;
+
+int solve() {
   return 0;
 }
 
@@ -63,10 +66,15 @@ void output(int res) {
   cout << res << endl;
 }
 
+void setIO(string s) {
+  freopen((s + ".in").c_str(), "r", stdin);
+  freopen((s + ".out").c_str(), "w", stdout);
+}
+
 int main() {
-  int n;
+  setIO("problem");
   cin >> n;
-  output(solve(n));
+  output(solve());
   return 0;
 }
 `

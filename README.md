@@ -4,15 +4,24 @@
 
 # Supported Sites and Referenced Guide Books
 
-- [x] AtCoder
-- [x] CodeForces
-- [x] Kattis
+- [x] [AtCoder](https://atcoder.jp/)
+- [x] [CodeForces](https://codeforces.com/)
+  * https://www.vplanetcoding.com
+  * https://usaco.guide/
+- [x] [Kattis](https://open.kattis.com/)
   * Johan Sannemo, *Principles of Algorithmic Problem Solving*
-- [x] CSES
+- [x] [CSES](https://cses.fi/)
   * Antti Laaksonen, *Guide to Competitive Programming*
-- [ ] UVa
+- [x] [USACO](http://usaco.org/)
+  * https://usaco.guide/
+- [ ] HDU
+  * 陈小玉, *算法训练营*
 - [ ] POJ
+  * 陈小玉, *算法训练营*
+- [ ] UVa
+  * 陈小玉, *算法训练营*
 - [ ] 洛谷
+  * 陈小玉, *算法训练营*
 
 # Supported Languages and Required Compilers
 
