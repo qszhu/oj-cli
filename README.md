@@ -13,6 +13,7 @@
 - [x] [CSES](https://cses.fi/)
   * Antti Laaksonen, *Guide to Competitive Programming*
 - [x] [USACO](http://usaco.org/)
+> Submission of code must be done via the interface on the usaco.org website (i.e., by selecting your file and clicking "submit solution"); attempts to submit via other means (e.g., scripts that attempt to automate this process) are NOT permitted. - http://www.usaco.org/index.php?page=instructions
   * https://usaco.guide/
 - [ ] HDU
   * 陈小玉, *算法训练营*
