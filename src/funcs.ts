@@ -10,6 +10,7 @@ import CodeForces from "./site/CodeForces"
 import CSES from "./site/CSES"
 import HDU from "./site/HDU"
 import Kattis from "./site/Kattis"
+import POJ from "./site/POJ"
 import USACO from "./site/USACO"
 import { Language } from "./types"
 
@@ -21,6 +22,7 @@ export function getSite(config: Config) {
   if (siteName === 'cses') return new CSES(config)
   if (siteName === 'usaco') return new USACO(config)
   if (siteName === 'hdu') return new HDU(config)
+  if (siteName === 'poj') return new POJ(config)
   throw new Error(`unsupported site ${siteName}`)
 }
 

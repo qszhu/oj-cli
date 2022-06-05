@@ -101,11 +101,7 @@ export async function submitFormForCookies(
     }
 
     // TODO: wait for selector
-    await page.waitForNetworkIdle({ timeout: 60 * 1000 })
-    // await page.waitForNavigation({
-    //   timeout: 60 * 1000,
-    //   waitUntil: 'networkidle2'
-    // })
+    await page.waitForTimeout(5 * 1000)
 
     cookies = await page.cookies()
   })

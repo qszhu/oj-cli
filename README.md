@@ -16,8 +16,9 @@
   * https://usaco.guide/
 - [x] HDU
   * 陈小玉, *算法训练营*
-- [ ] POJ
+- [x] POJ
   * 陈小玉, *算法训练营*
+  * Ozy, *Short Coding ~職人達の技法*
 - [ ] UVa
   * 陈小玉, *算法训练营*
 - [ ] 洛谷
