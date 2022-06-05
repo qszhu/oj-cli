@@ -2,7 +2,12 @@
 
 * Node.js >= v14.1
 
-# Supported Sites and Referenced Guide Books
+# Caution
+
+* \[USACO\] Use at your own risk:
+> Submission of code must be done via the interface on the usaco.org website (i.e., by selecting your file and clicking "submit solution"); attempts to submit via other means (e.g., scripts that attempt to automate this process) are NOT permitted. - http://www.usaco.org/index.php?page=instructions
+
+# Supported Sites and Referenced Guide Books/Websites
 
 - [x] [AtCoder](https://atcoder.jp/)
 - [x] [CodeForces](https://codeforces.com/)
@@ -14,14 +19,14 @@
   * Antti Laaksonen, *Guide to Competitive Programming*
 - [x] [USACO](http://usaco.org/)
   * https://usaco.guide/
-- [x] HDU
+- [x] [HDU](https://acm.hdu.edu.cn/)
   * 陈小玉, *算法训练营*
-- [x] POJ
+- [x] [POJ](http://poj.org/)
   * 陈小玉, *算法训练营*
   * Ozy, *Short Coding ~職人達の技法*
-- [ ] UVa
+- [ ] [UVa](https://onlinejudge.org/index.php)
   * 陈小玉, *算法训练营*
-- [ ] 洛谷
+- [ ] [洛谷](https://www.luogu.com.cn/)
   * 陈小玉, *算法训练营*
 
 # Supported Languages and Required Compilers
@@ -82,6 +87,4 @@ $ oj submit
 # Known Issues
 
 * \[USACO\] Problems before 2020 requires file IO.
-* \[USACO\] Use at your own risk:
-> Submission of code must be done via the interface on the usaco.org website (i.e., by selecting your file and clicking "submit solution"); attempts to submit via other means (e.g., scripts that attempt to automate this process) are NOT permitted. - http://www.usaco.org/index.php?page=instructions
 * \[HDU\] C++ multi-line comments causes CE.
