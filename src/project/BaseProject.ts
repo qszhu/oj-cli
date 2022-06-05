@@ -1,3 +1,4 @@
+import fs from 'fs';
 import path, { basename } from 'path';
 import { Language, Problem } from '../types';
 import { ensureDir, getFiles, getFolders, linkFile, runCmd, writeStringToFile } from "../utils";
@@ -27,6 +28,10 @@ export default abstract class BaseProject {
 
   getBuiltFn(): string {
     return path.join(this.getBuildDir(), `solution.${this.lang}`)
+  }
+
+  getSource(): string {
+    return fs.readFileSync(this.getBuiltFn(), 'utf-8')
   }
 
   protected async getTargetSourceFn() {

@@ -13,9 +13,8 @@
 - [x] [CSES](https://cses.fi/)
   * Antti Laaksonen, *Guide to Competitive Programming*
 - [x] [USACO](http://usaco.org/)
-> Submission of code must be done via the interface on the usaco.org website (i.e., by selecting your file and clicking "submit solution"); attempts to submit via other means (e.g., scripts that attempt to automate this process) are NOT permitted. - http://www.usaco.org/index.php?page=instructions
   * https://usaco.guide/
-- [ ] HDU
+- [x] HDU
   * 陈小玉, *算法训练营*
 - [ ] POJ
   * 陈小玉, *算法训练营*
@@ -41,38 +40,47 @@
 - [ ] OCaml
 - [ ] Elixir
 
-# Install
+# Usage
+
+## Install
 
 ```bash
 $ npm i -g ya-oj-cli
 ```
 
-# Create Solution
+## Login to OJ
 
 ```bash
-$ oj new 1A --site=codeforces --lang=cpp
+$ oj login --site=codeforces
 ```
 
-# Build Solution
+## Create Solution
+
+```bash
+$ oj new 1A --lang=cpp
+```
+
+## Build Solution
 
 ```bash
 $ oj build
 ```
 
-# Test Solution
+## Test Solution
 
 ```bash
 $ oj test
 ```
 
-# Login to OJ
-
-```bash
-$ oj login
-```
-
-# Submit Solution
+## Submit Solution
 
 ```bash
 $ oj submit
 ```
+
+# Known Issues
+
+* \[USACO\] Problems before 2020 requires file IO.
+* \[USACO\] Use at your own risk:
+> Submission of code must be done via the interface on the usaco.org website (i.e., by selecting your file and clicking "submit solution"); attempts to submit via other means (e.g., scripts that attempt to automate this process) are NOT permitted. - http://www.usaco.org/index.php?page=instructions
+* \[HDU\] C++ multi-line comments causes CE.

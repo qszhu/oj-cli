@@ -8,6 +8,7 @@ import Site from "./site"
 import AtCoder from "./site/AtCoder"
 import CodeForces from "./site/CodeForces"
 import CSES from "./site/CSES"
+import HDU from "./site/HDU"
 import Kattis from "./site/Kattis"
 import USACO from "./site/USACO"
 import { Language } from "./types"
@@ -19,6 +20,7 @@ export function getSite(config: Config) {
   if (siteName === 'kattis') return new Kattis(config)
   if (siteName === 'cses') return new CSES(config)
   if (siteName === 'usaco') return new USACO(config)
+  if (siteName === 'hdu') return new HDU(config)
   throw new Error(`unsupported site ${siteName}`)
 }
 

@@ -3,6 +3,7 @@ import { Language, Problem } from "../types";
 export default interface Project {
   getLanguage(): Language
   getBuiltFn(): string
+  getSource(): string
   create(problem: Problem): Promise<unknown>
   build(): Promise<unknown>
   runTests(): Promise<unknown>
