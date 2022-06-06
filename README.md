@@ -25,8 +25,10 @@
 - [ ] [SPOJ](https://www.spoj.com/)
 - [ ] [Timus](https://acm.timus.ru/)
 - [ ] [CodeChef](https://www.codechef.com/)
+- [ ] [IPSC](https://ipsc.ksp.sk/)
 - [ ] [Codility](https://app.codility.com/programmers/)
 - [ ] [Prologin](https://prologin.org/)
+- [ ] [LA](http://livearchive.onlinejudge.org/)
 
 # Supported Languages and Required Compilers
 
@@ -98,8 +100,21 @@ $ oj submit
   * UVa
 * 刘汝佳, 陈锋, *算法竞赛入门经典————训练指南*
   * UVa
+  * POJ
+  * CodeForces
+  * SPOJ
+  * IPSC
+  * LA
+  * 牛客
 * 陈锋, *算法竞赛入门经典————习题解答*
   * UVa
+* 陈锋, *算法竞赛入门经典————算法实现*
+  * UVa
+  * POJ
+  * HDU
+  * SPOJ
+  * CodeChef
+  * 牛客
 * 李煜东, *算法竞赛进阶指南*
   * CH
   * AcWing
@@ -144,7 +159,7 @@ $ oj submit
   * POJ
   * CodeChef
   * Codility
-  * prologin
+  * Prologin
 
 # Websites
 * https://usaco.guide/
