@@ -29,6 +29,10 @@
 - [ ] [Codility](https://app.codility.com/programmers/)
 - [ ] [Prologin](https://prologin.org/)
 - [ ] [LA](http://livearchive.onlinejudge.org/)
+- [ ] [SDUT](https://acm.sdut.edu.cn/onlinejudge3/)
+- [ ] [HackerRank](https://www.hackerrank.com)
+- [ ] [beecrowd (uri)](https://www.beecrowd.com.br)
+- [ ] [yukicoder](https://yukicoder.me/)
 
 # Supported Languages and Required Compilers
 
@@ -126,6 +130,8 @@ $ oj submit
   * POJ
   * UVa
   * 洛谷
+  * SDUT
+  * TOJ
 
 ## English
 * Steven Halim, Felix Halim, *Competitive Programming 4*
