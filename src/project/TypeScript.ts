@@ -40,9 +40,12 @@ process.stdin.on('end', () => {
 
 const main = (lines: string[]): void => {
   let i = 0
-  for (let t = Number(lines[i++]); t > 0; t--) {
+  const readString = () => lines[i++]
+  const readNumbers = () => readString().split(' ').map(Number)
+
+  for (let [t] = readNumbers(); t > 0; t--) {
     // TODO
-    const args = lines[i++]
+    const args = readNumbers()
     output(solve(args))
   }
 }
