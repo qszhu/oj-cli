@@ -83,7 +83,10 @@ export default class HDU extends BaseSite implements Site {
       const programType = programTypeFromLang(project.getLanguage())
       await page.select(selectSel, programType)
 
-      await page.type(sourceSel, project.getSource())
+      await page.evaluate(({ sel, src }) => {
+        const textArea = document.querySelector(sel)!
+        ;(textArea as HTMLInputElement).value = src
+      }, { sel: sourceSel, src: project.getSource() })
 
       await page.click(submitSel)
       await page.waitForTimeout(2 * 60 * 1000)
