@@ -12,6 +12,7 @@ import HDU from "./site/HDU"
 import Kattis from "./site/Kattis"
 import POJ from "./site/POJ"
 import USACO from "./site/USACO"
+import UVa from "./site/UVa"
 import { Language } from "./types"
 
 export function getSite(config: Config) {
@@ -23,6 +24,7 @@ export function getSite(config: Config) {
   if (siteName === 'usaco') return new USACO(config)
   if (siteName === 'hdu') return new HDU(config)
   if (siteName === 'poj') return new POJ(config)
+  if (siteName === 'uva') return new UVa(config)
   throw new Error(`unsupported site ${siteName}`)
 }
 
