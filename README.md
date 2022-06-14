@@ -16,7 +16,7 @@
 - [x] [USACO](http://usaco.org/)
 - [x] [HDU](https://acm.hdu.edu.cn/)
 - [x] [POJ](http://poj.org/)
-- [ ] [UVa](https://onlinejudge.org/index.php)
+- [x] [UVa](https://onlinejudge.org/index.php)
 - [ ] [洛谷](https://www.luogu.com.cn/)
 - [ ] [AcWing](https://www.acwing.com/)
 - [ ] [CH](http://www.contest-hunter.org/)
