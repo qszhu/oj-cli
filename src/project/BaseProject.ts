@@ -61,11 +61,7 @@ export default abstract class BaseProject {
 
   protected async newSolution(problem: Problem) {
     const fn = await this.getTargetSourceFn()
-    const src = `/*
-${problem.desc}
-*/
-${this.getSrcTemplate()}
-`
+    const src = `${this.getSrcTemplate()}`
     await writeStringToFile(fn, src)
     await linkFile(this.getSourceFn(), basename(fn))
   }
@@ -87,6 +83,7 @@ ${this.getSrcTemplate()}
   async build() {
     await this.beforeBuild()
     const cmd = this.getBuildCmd(this.getSourceFn(), this.getBuiltFn())
+    console.log(cmd)
 
     const { err, stdout, stderr } = await runCmd(cmd)
     if (err) throw new Error(stderr)
@@ -104,6 +101,7 @@ ${this.getSrcTemplate()}
     const outputFn = path.join(this.getTestDir(), testFolder, 'out.txt')
 
     const cmd = `${this.getRunCmd()} < ${inputFn} | diff ${outputFn} -`
+    console.log(cmd)
 
     const { err, stdout, stderr } = await runCmd(cmd)
     if (err) throw new Error(stdout)

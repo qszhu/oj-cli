@@ -1,6 +1,6 @@
 {
   "name": "ya-oj-cli",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "yet another online judge cli",
   "bin": {
     "oj": "./dist/main.js"

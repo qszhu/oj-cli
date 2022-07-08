@@ -3,4 +3,11 @@
 - [ ] DRY web operations
 - [ ] compiler variations
   - [ ] esbuild nodejs target
+    - AtCoder 12.16.1
+    - CodeForces 12.16.3
+  - [ ] kotlin language version
+    - AtCoder 1.3.71
+    - CodeForces 1.6.10
   - [ ] cpp standard
+- [ ] link lib dir
+- [ ] screenshot instead of text content

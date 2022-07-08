@@ -33,11 +33,15 @@ async function main() {
   if (cmd === 'new') {
     await prompt.confirm(site, problemId, lang)
     await funcs.newSolution(site, problemId, lang)
-  } else if (cmd === 'build') await funcs.buildSolution(site, problemId, lang)
-  else if (cmd === 'test') await funcs.testSolution(site, problemId, lang)
-  else if (cmd === 'submit') await funcs.submitSolution(site, problemId, lang)
-  else if (cmd === 'login') await funcs.login(site)
+  } else if (cmd === 'test') {
+    await funcs.buildSolution(site, problemId, lang)
+    await funcs.testSolution(site, problemId, lang)
+  } else if (cmd === 'submit') {
+    await funcs.buildSolution(site, problemId, lang)
+    await funcs.submitSolution(site, problemId, lang)
+  } else if (cmd === 'login') await funcs.login(site)
   else if (cmd === 'select') await funcs.selectSolution(site, problemId, lang, Number(param))
+  else console.log(`Unknown command: ${cmd}`)
 }
 
 if (require.main === module) {

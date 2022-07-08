@@ -94,9 +94,6 @@ $ oj submit
 ## USACO
 * Problems before 2020 requires file IO.
 
-## HDU
-* C++ multi-line comments causes CE.
-
 ## UVA
 * No auto extraction of sample test case yet.
 * Problem ID is in the page url, usually different from that on the page.

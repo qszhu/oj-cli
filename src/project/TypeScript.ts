@@ -3,7 +3,7 @@ import Project from '.';
 import { Language } from "../types";
 import BaseProject from "./BaseProject";
 
-const TARGET = 'node10.0'
+const TARGET = 'node12.16.1'
 
 export default class TypeScript extends BaseProject implements Project {
   constructor(rootDir: string) {
@@ -38,23 +38,27 @@ process.stdin.on('end', () => {
   main(lines)
 })
 
+let args: number[]
+
 const main = (lines: string[]): void => {
   let i = 0
   const readString = () => lines[i++]
-  const readNumbers = () => readString().split(' ').map(Number)
+  const readStrings = () => readString().split(' ')
+  const readNumber = () => Number(readString())
+  const readNumbers = () => readStrings().map(Number)
 
   for (let [t] = readNumbers(); t > 0; t--) {
     // TODO
-    const args = readNumbers()
-    output(solve(args))
+    args = readNumbers()
+    output(solve())
   }
 }
 
-const solve = (args: any): any => {
+const solve = () => {
   // TODO
 }
 
-const output = (res: any): void => {
+const output = (res: any) => {
   // TODO
   console.log(res)
 }

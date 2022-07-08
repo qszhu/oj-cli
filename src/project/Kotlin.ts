@@ -42,6 +42,7 @@ fun readLong() = readln().toLong()
 fun readStrings() = readln().split(" ")
 fun readInts() = readStrings().map { it.toInt() }
 fun readLongs() = readStrings().map { it.toLong() }
+fun readLines(n: Int) = List(n) { readln() }
 
 fun main() {
     // TODO
