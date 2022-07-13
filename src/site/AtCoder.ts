@@ -53,8 +53,8 @@ export default class AtCoder extends BaseSite implements Site {
     const url = `${this.host}/contests/${contestId}/tasks/${problemId}`
 
     const getProblemDesc = () => {
-      const problemSel = 'span.lang-ja'
-      const partsSel = 'span.lang-ja div.part'
+      const problemSel = 'div#task-statement'
+      const partsSel = 'div#task-statement section'
 
       const problem = document.querySelector(problemSel)
       const parts = document.querySelectorAll(partsSel)
