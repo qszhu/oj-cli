@@ -16,7 +16,7 @@ async function main() {
     config.site = String(argv.site)
   }
   if (param) {
-    config.problemId = String(param)
+    if (!['select'].includes(cmd.toString())) config.problemId = String(param)
   }
   if (argv.lang) {
     config.language = String(argv.lang)
