@@ -53,8 +53,8 @@ export default class AtCoder extends BaseSite implements Site {
     const url = `${this.host}/contests/${contestId}/tasks/${problemId}`
 
     const getProblemDesc = () => {
-      const problemSel = 'span.lang-en'
-      const partsSel = 'span.lang-en div.part'
+      const problemSel = 'span.lang-ja'
+      const partsSel = 'span.lang-ja div.part'
 
       const problem = document.querySelector(problemSel)
       const parts = document.querySelectorAll(partsSel)
@@ -62,9 +62,9 @@ export default class AtCoder extends BaseSite implements Site {
       let testCase: any = {}
       for (let i = 0; i < parts.length; i++) {
         const part: any = parts[i]
-        if (part.innerText.trim().startsWith('Sample Input')) {
+        if (part.innerText.trim().startsWith('入力例')) {
           testCase.input = part.querySelector('pre').innerText
-        } else if (part.innerText.trim().startsWith('Sample Output')) {
+        } else if (part.innerText.trim().startsWith('出力例')) {
           testCase.output = part.querySelector('pre').innerText
           tests.push(testCase)
           testCase = {}
