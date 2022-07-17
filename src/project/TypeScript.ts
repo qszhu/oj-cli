@@ -41,8 +41,8 @@ process.stdin.on('end', () => {
 let args: number[]
 
 const main = (lines: string[]): void => {
-  let i = 0
-  const readString = () => lines[i++]
+  let _ln = 0
+  const readString = () => lines[_ln++]
   const readStrings = () => readString().split(' ')
   const readNumber = () => Number(readString())
   const readNumbers = () => readStrings().map(Number)
