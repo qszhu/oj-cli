@@ -11,7 +11,7 @@ const splitProblemId = (problemId: string): string[] =>
 
 function programTypeFromLang(lang: Language): string {
   switch (lang) {
-    case Language.Cpp: return '4004'
+    case Language.Cpp: return '4003' // Clang '4004'
     case Language.Java: return '4005'
     case Language.Python: return '4006' // PyPy3 '4047'
     case Language.Dart: return '4018'
