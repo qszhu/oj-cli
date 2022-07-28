@@ -47,7 +47,7 @@ const main = (lines: string[]): void => {
   const readNumber = () => Number(readString())
   const readNumbers = () => readStrings().map(Number)
 
-  for (let [t] = readNumbers(); t > 0; t--) {
+  for (let t = readNumber(); t > 0; t--) {
     // TODO
     args = readNumbers()
     output(solve())

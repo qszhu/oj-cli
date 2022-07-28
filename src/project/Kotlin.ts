@@ -46,8 +46,10 @@ fun readLines(n: Int) = List(n) { readln() }
 
 fun main() {
     // TODO
-    val n = readLong()
-    output(solve(n))
+    repeat(readInt()) {
+        val n = readLong()
+        output(solve(n))
+    }
 }
 
 fun solve(n: Long): Long {
