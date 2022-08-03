@@ -26,6 +26,10 @@ export default abstract class BaseProject {
     return path.join(this.getSourceDir(), `solution.${this.lang}`)
   }
 
+  private getLibDir() {
+    return path.join(this.getSourceDir(), 'lib')
+  }
+
   getBuiltFn(): string {
     return path.join(this.getBuildDir(), `solution.${this.lang}`)
   }
@@ -64,6 +68,8 @@ export default abstract class BaseProject {
     const src = `${this.getSrcTemplate()}`
     await writeStringToFile(fn, src)
     await linkFile(this.getSourceFn(), basename(fn))
+    await linkFile(this.getLibDir(),
+      path.relative(this.getLibDir(), path.join(this.rootDir, '..', 'lib')))
   }
 
   async select(n: number) {
