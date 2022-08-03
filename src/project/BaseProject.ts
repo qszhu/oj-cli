@@ -105,14 +105,21 @@ export default abstract class BaseProject {
 
     const inputFn = path.join(this.getTestDir(), testFolder, 'in.txt')
     const outputFn = path.join(this.getTestDir(), testFolder, 'out.txt')
+    const myOutputFn = path.join(this.getTestDir(), testFolder, 'myOut.txt')
 
-    const cmd = `${this.getRunCmd()} < ${inputFn} | diff ${outputFn} -`
+    const cmd = `${this.getRunCmd()} < ${inputFn} > ${myOutputFn}`
     console.log(cmd)
 
-    const { err, stdout, stderr } = await runCmd(cmd)
-    if (err) throw new Error(stdout)
+    {
+      const { err, stdout, stderr } = await runCmd(cmd)
+      if (err) throw new Error(stdout)
+    }
+    {
+      const { err, stdout, stderr } = await runCmd(`code --diff ${outputFn} ${myOutputFn}`)
+      if (err) throw new Error(stdout)
+    }
 
-    console.log('Passed.')
+    // console.log('Passed.')
   }
 
   async runTests() {
@@ -131,7 +138,7 @@ export default abstract class BaseProject {
     }
 
     if (allPassed) {
-      console.log('All tests passed.')
+      // console.log('All tests passed.')
     }
   }
 }
