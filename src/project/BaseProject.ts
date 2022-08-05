@@ -69,7 +69,7 @@ export default abstract class BaseProject {
     await writeStringToFile(fn, src)
     await linkFile(this.getSourceFn(), basename(fn))
     await linkFile(this.getLibDir(),
-      path.relative(this.getLibDir(), path.join(this.rootDir, '..', 'lib')))
+      path.relative(this.getLibDir(), path.join(this.rootDir, '..', 'lib', this.lang)))
   }
 
   async select(n: number) {
