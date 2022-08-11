@@ -6,8 +6,11 @@ import Project from "../project";
 import { Language, Problem } from "../types";
 import BaseSite from "./BaseSite";
 
-const splitProblemId = (problemId: string): string[] =>
-  problemId.split('_')
+const splitProblemId = (problemId: string): string[] => {
+  const res = problemId.split('_')
+  if (problemId.startsWith('s8pc_')) return [`${res[0]}-${res[1]}`, res[2]]
+  return res
+}
 
 function programTypeFromLang(lang: Language): string {
   switch (lang) {

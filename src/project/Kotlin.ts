@@ -28,6 +28,7 @@ export default class Kotlin extends BaseProject implements Project {
 
   protected getBuildCmd(srcFn: string, outFn: string) {
     const jarFn = this.getJarFn()
+    // return `kotlinc -language-version 1.3 ${srcFn} -include-runtime -d ${jarFn}`
     return `kotlinc ${srcFn} -include-runtime -d ${jarFn}`
   }
 
