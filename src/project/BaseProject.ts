@@ -111,7 +111,9 @@ export default abstract class BaseProject {
     console.log(cmd)
 
     {
+      const st = new Date().getTime()
       const { err, stdout, stderr } = await runCmd(cmd)
+      console.log(`${new Date().getTime() - st}ms`)
       if (err) throw new Error(stdout)
     }
     {
