@@ -39,12 +39,15 @@ export default class Kotlin extends BaseProject implements Project {
 
 const TMPL = `import kotlin.system.exitProcess
 
-fun readString() = readLine()!!
+val br = System.\`in\`.bufferedReader()
+
+fun readString() = br.readLine()!!
 fun readInt() = readString().toInt()
 fun readLong() = readString().toLong()
 fun readStrings() = readString().split(" ")
 fun readInts() = readStrings().map { it.toInt() }.toIntArray()
 fun readLongs() = readStrings().map { it.toLong() }.toLongArray()
+fun readDoubles() = readStrings().map { it.toDouble() }.toDoubleArray()
 fun readLines(n: Int) = Array(n) { readString() }
 
 const val MAX_STACK_SIZE: Long = 128 * 1024 * 1024
@@ -53,8 +56,8 @@ fun main() {
     // TODO
     val n = readLong()
 
-    val thread = Thread(null, Runnable {
-      output(solve(n))
+    val thread = Thread(null, {
+        output(solve(n))
     }, "solve", MAX_STACK_SIZE)
     thread.setUncaughtExceptionHandler { _, e -> e.printStackTrace(); exitProcess(1) }
     thread.start()
@@ -69,4 +72,5 @@ fun output(res: Long) {
     // TODO
     println(res)
 }
+
 `
