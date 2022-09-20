@@ -72,5 +72,4 @@ fun output(res: Long) {
     // TODO
     println(res)
 }
-
 `

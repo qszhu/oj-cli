@@ -7,9 +7,8 @@ import { Language, Problem } from "../types";
 import BaseSite from "./BaseSite";
 
 const splitProblemId = (problemId: string): string[] => {
-  const res = problemId.split('_')
-  if (problemId.startsWith('s8pc_')) return [`${res[0]}-${res[1]}`, res[2]]
-  return res
+  const i = problemId.lastIndexOf('_')
+  return [problemId.substring(0, i).replace(/_/g, '-'), problemId.substring(i + 1)]
 }
 
 function programTypeFromLang(lang: Language): string {
