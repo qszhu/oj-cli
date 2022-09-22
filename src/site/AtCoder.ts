@@ -6,9 +6,22 @@ import Project from "../project";
 import { Language, Problem } from "../types";
 import BaseSite from "./BaseSite";
 
+const contestMap = new Map([
+  ['indeednow_2015_quala', 'indeednow-quala'],
+  ['indeednow_2015_qualb', 'indeednow-qualb'],
+  ['indeednow_2015_finala', 'indeednow-finala-open'],
+  ['indeednow_2015_finalb', 'indeednow-finalb-open'],
+])
+
 const splitProblemId = (problemId: string): string[] => {
   const i = problemId.lastIndexOf('_')
-  return [problemId.substring(0, i).replace(/_/g, '-'), problemId.substring(i + 1)]
+  let contestId = problemId.substring(0, i)
+  const taskId = problemId.substring(i + 1)
+
+  if (contestMap.has(contestId)) contestId = contestMap.get(contestId)!
+  else contestId = contestId.replace(/_/g, '-')
+
+  return [contestId, taskId]
 }
 
 function programTypeFromLang(lang: Language): string {
