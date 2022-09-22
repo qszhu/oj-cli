@@ -17,8 +17,8 @@ import { Language } from "./types"
 
 export function getSite(config: Config) {
   const siteName = config.site
-  if (siteName === 'atcoder') return new AtCoder(config)
-  if (siteName === 'codeforces') return new CodeForces(config)
+  if (siteName === 'atc') return new AtCoder(config)
+  if (siteName === 'cf') return new CodeForces(config)
   if (siteName === 'kattis') return new Kattis(config)
   if (siteName === 'cses') return new CSES(config)
   if (siteName === 'usaco') return new USACO(config)

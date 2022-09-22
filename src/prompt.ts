@@ -9,9 +9,14 @@ export async function promptSite() {
       name: 'site',
       message: 'choose a site:',
       choices: [
-        { title: 'AtCoder', value: 'atcoder' },
-        { title: 'CodeForces', value: 'codeforces' },
-        { title: 'Kattis', value: 'kattis' }
+        { title: 'AtCoder', value: 'atc' },
+        { title: 'CodeForces', value: 'cf' },
+        { title: 'Kattis', value: 'kattis' },
+        { title: 'UVa', value: 'uva' },
+        { title: 'POJ', value: 'poj' },
+        { title: 'CSES', value: 'cses' },
+        { title: 'HDU', value: 'hdu' },
+        { title: 'USACO', value: 'usaco' }
       ]
     }
   ])
