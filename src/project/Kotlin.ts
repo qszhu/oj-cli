@@ -15,25 +15,23 @@ export default class Kotlin extends BaseProject implements Project {
     return TMPL
   }
 
-  private getJarFn(): string {
+  public getBuiltFn(): string {
     return path.join(this.getBuildDir(), 'solution.jar')
+  }
+
+  public getSubmitFn(): string {
+    return path.join(this.getBuildDir(), 'solution.kt')
   }
 
   protected async beforeBuild() {
     const srcFn = this.getSourceFn()
-    const outFn = this.getBuiltFn()
+    const outFn = this.getSubmitFn()
     await ensureDir(path.dirname(outFn))
     await promisify(fs.copyFile)(srcFn, outFn)
   }
 
-  protected getBuildCmd(srcFn: string, outFn: string) {
-    const jarFn = this.getJarFn()
-    return `kotlinc -language-version 1.3 ${srcFn} -include-runtime -d ${jarFn}`
-    // return `kotlinc ${srcFn} -include-runtime -d ${jarFn}`
-  }
-
   protected getRunCmd() {
-    return `java -jar ${this.getJarFn()}`
+    return `java -jar ${this.getBuiltFn()}`
   }
 }
 
@@ -44,6 +42,7 @@ val br = System.\`in\`.bufferedReader()
 fun readString() = br.readLine()!!
 fun readInt() = readString().toInt()
 fun readLong() = readString().toLong()
+fun readDouble() = readString().toDouble()
 fun readStrings() = readString().split(" ")
 fun readInts() = readStrings().map { it.toInt() }.toIntArray()
 fun readLongs() = readStrings().map { it.toLong() }.toLongArray()
@@ -53,10 +52,10 @@ fun readLines(n: Int) = Array(n) { readString() }
 const val MAX_STACK_SIZE: Long = 128 * 1024 * 1024
 
 fun main() {
-    // TODO
-    val n = readLong()
-
     val thread = Thread(null, {
+        // TODO
+        val n = readLong()
+
         output(solve(n))
     }, "solve", MAX_STACK_SIZE)
     thread.setUncaughtExceptionHandler { _, e -> e.printStackTrace(); exitProcess(1) }

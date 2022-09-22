@@ -91,7 +91,7 @@ export default class CSES extends BaseSite implements Site {
       await page.select(selectSel, programType)
 
       const uploadHandle = await page.$(uploadSel)
-      uploadHandle?.uploadFile(project.getBuiltFn())
+      uploadHandle?.uploadFile(project.getSubmitFn())
 
       await page.click(submitSel)
       await page.waitForTimeout(2 * 60 * 1000)

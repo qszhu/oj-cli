@@ -64,7 +64,7 @@ export default class UVa extends BaseSite implements Site {
       await page.click(`input[name=language][value="${programType}"]`)
 
       const uploadHandle = await page.$(uploadSel)
-      uploadHandle?.uploadFile(project.getBuiltFn())
+      uploadHandle?.uploadFile(project.getSubmitFn())
 
       await page.click(submitSel)
       await page.waitForTimeout(2 * 60 * 1000)

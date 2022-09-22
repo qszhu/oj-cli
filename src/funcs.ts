@@ -71,7 +71,7 @@ export async function buildSolution(site: Site, problemId: string, lang: Languag
   const rootDir = path.join(site.name, problemId)
   const project = createProject(lang, rootDir)
 
-  await project.build()
+  await project.build(site)
 }
 
 export async function testSolution(site: Site, problemId: string, lang: Language) {

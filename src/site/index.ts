@@ -1,5 +1,5 @@
 import Project from "../project"
-import { Problem } from "../types"
+import { Language, Problem } from "../types"
 
 export default interface Site {
   readonly name: string
@@ -7,5 +7,6 @@ export default interface Site {
   login(username: string, password: string): Promise<unknown>
   thirdPartyLogin(): Promise<unknown>
   readProblem(problemId: string): Promise<Problem>
+  getBuildCmdFromLang(lang: Language, srcFn: string, outFn: string): string
   submit(problemId: string, project: Project): Promise<unknown>
 }

@@ -36,8 +36,8 @@ function programTypeFromLang(lang: Language): string {
     case Language.TypeScript: return '4030'
     case Language.Kotlin: return '4032'
     case Language.Rust: return '4050'
+      defalt: throw new Error(`unsupported languge ${lang}`)
   }
-  throw new Error(`unsupported languge ${lang}`)
 }
 
 export default class AtCoder extends BaseSite implements Site {
@@ -99,6 +99,15 @@ export default class AtCoder extends BaseSite implements Site {
     return new Problem(problemId, textContent, tests)
   }
 
+  getBuildCmdFromLang(lang: Language, srcFn: string, outFn: string): string {
+    switch (lang) {
+      case Language.Kotlin:
+        return `kotlinc -language-version 1.3 ${srcFn} -include-runtime -d ${outFn} -XXLanguage:+InlineClasses`
+      default:
+        throw new Error(`Unsupported language ${lang}`)
+    }
+  }
+
   async submit(problemId: string, project: Project) {
     const [contestId] = splitProblemId(problemId)
     const selectSel = 'select'
@@ -120,7 +129,7 @@ export default class AtCoder extends BaseSite implements Site {
       await page.select(selectSel, programType)
 
       const uploadHandle = await page.$(uploadSel)
-      uploadHandle?.uploadFile(project.getBuiltFn())
+      uploadHandle?.uploadFile(project.getSubmitFn())
 
       await page.click(submitSel)
       await page.waitForTimeout(2 * 60 * 1000)

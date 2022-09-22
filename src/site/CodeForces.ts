@@ -85,6 +85,15 @@ export default class CodeForces extends BaseSite implements Site {
     return new Problem(problemId, textContent, tests)
   }
 
+  getBuildCmdFromLang(lang: Language, srcFn: string, outFn: string): string {
+    switch (lang) {
+      case Language.Kotlin:
+        return `kotlinc -language-version 1.6 ${srcFn} -include-runtime -d ${outFn} -jvm-target 11`
+      default:
+        throw new Error(`Unsupported language ${lang}`)
+    }
+  }
+
   async submit(problemId: string, project: Project) {
     const [contestId, problemIndex] = splitProblemId(problemId)
     const selectSel = 'select[name=programTypeId]'
@@ -106,7 +115,7 @@ export default class CodeForces extends BaseSite implements Site {
       await page.select(selectSel, programType)
 
       const uploadHandle = await page.$(uploadSel)
-      uploadHandle?.uploadFile(project.getBuiltFn())
+      uploadHandle?.uploadFile(project.getSubmitFn())
 
       await page.click(submitSel)
       await page.waitForTimeout(2 * 60 * 1000)

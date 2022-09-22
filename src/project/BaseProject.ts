@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path, { basename } from 'path';
+import Site from '../site';
 import { Language, Problem } from '../types';
 import { ensureDir, getFiles, getFolders, linkFile, runCmd, writeStringToFile } from "../utils";
 
@@ -32,6 +33,10 @@ export default abstract class BaseProject {
 
   getBuiltFn(): string {
     return path.join(this.getBuildDir(), `solution.${this.lang}`)
+  }
+
+  getSubmitFn(): string {
+    return this.getBuiltFn()
   }
 
   getSource(): string {
@@ -84,11 +89,9 @@ export default abstract class BaseProject {
 
   protected async beforeBuild() { }
 
-  protected abstract getBuildCmd(srcFn: string, outFn: string): string
-
-  async build() {
+  async build(site: Site) {
     await this.beforeBuild()
-    const cmd = this.getBuildCmd(this.getSourceFn(), this.getBuiltFn())
+    const cmd = site.getBuildCmdFromLang(this.lang, this.getSourceFn(), this.getBuiltFn())
     console.log(cmd)
 
     const { err, stdout, stderr } = await runCmd(cmd)
