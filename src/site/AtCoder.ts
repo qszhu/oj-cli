@@ -1,16 +1,17 @@
-import { convert } from "html-to-text";
-import Site from ".";
-import Config from "../config";
-import { extractInfo, newPage, submitFormForCookies } from "../lib/crawler";
-import Project from "../project";
-import { Language, Problem } from "../types";
-import BaseSite from "./BaseSite";
+import { convert } from 'html-to-text'
+import Site from '.'
+import Config from '../config'
+import { extractInfo, newPage, submitFormForCookies } from '../lib/crawler'
+import Project from '../project'
+import { Language, Problem } from '../types'
+import BaseSite from './BaseSite'
 
 const contestMap = new Map([
   ['indeednow_2015_quala', 'indeednow-quala'],
   ['indeednow_2015_qualb', 'indeednow-qualb'],
   ['indeednow_2015_finala', 'indeednow-finala-open'],
   ['indeednow_2015_finalb', 'indeednow-finalb-open'],
+  ['code_festival_final', 'code-festival-2014-final']
 ])
 
 const splitProblemId = (problemId: string): string[] => {
@@ -36,8 +37,8 @@ function programTypeFromLang(lang: Language): string {
     case Language.TypeScript: return '4030'
     case Language.Kotlin: return '4032'
     case Language.Rust: return '4050'
-      defalt: throw new Error(`unsupported languge ${lang}`)
   }
+  throw new Error(`unsupported languge ${lang}`)
 }
 
 export default class AtCoder extends BaseSite implements Site {
@@ -118,9 +119,7 @@ export default class AtCoder extends BaseSite implements Site {
     const url = `${this.host}/contests/${contestId}/tasks/${problemId}`
     await newPage(async page => {
       await page.setCookie(...this.config.getCookies(this.host))
-      await page.goto(url, {
-        waitUntil: 'networkidle2'
-      })
+      await page.goto(url, { waitUntil: 'networkidle2' })
 
       await Promise.all([selectSel, uploadSel, submitSel]
         .map(s => page.waitForSelector(s)))

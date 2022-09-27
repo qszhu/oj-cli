@@ -1,8 +1,8 @@
-import fs from 'fs';
-import path, { basename } from 'path';
-import Site from '../site';
-import { Language, Problem } from '../types';
-import { ensureDir, getFiles, getFolders, linkFile, runCmd, writeStringToFile } from "../utils";
+import fs from 'fs'
+import path, { basename } from 'path'
+import Site from '../site'
+import { Language, Problem } from '../types'
+import { ensureDir, getFiles, getFolders, linkFile, runCmd, writeStringToFile } from '../utils'
 
 export default abstract class BaseProject {
   constructor(private rootDir: string, protected lang: Language) { }

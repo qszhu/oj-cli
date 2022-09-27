@@ -1,7 +1,7 @@
-import path from 'path';
-import Project from '.';
-import { Language } from "../types";
-import BaseProject from "./BaseProject";
+import path from 'path'
+import Project from '.'
+import { Language } from '../types'
+import BaseProject from './BaseProject'
 
 const TARGET = 'node12.16.1'
 

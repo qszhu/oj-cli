@@ -1,19 +1,22 @@
-import path from "path"
-import prompts from "prompts"
-import Config from "./config"
-import Cpp from "./project/Cpp"
-import Kotlin from "./project/Kotlin"
-import TypeScript from "./project/TypeScript"
-import Site from "./site"
-import AtCoder from "./site/AtCoder"
-import CodeForces from "./site/CodeForces"
-import CSES from "./site/CSES"
-import HDU from "./site/HDU"
-import Kattis from "./site/Kattis"
-import POJ from "./site/POJ"
-import USACO from "./site/USACO"
-import UVa from "./site/UVa"
-import { Language } from "./types"
+import path from 'path'
+import prompts from 'prompts'
+import Config from './config'
+import Cpp from './project/Cpp'
+import Kotlin from './project/Kotlin'
+import TypeScript from './project/TypeScript'
+import Site from './site'
+import AOJ from './site/AOJ'
+import AtCoder from './site/AtCoder'
+import CodeChef from './site/CodeChef'
+import CodeForces from './site/CodeForces'
+import CSES from './site/CSES'
+import HackerEarth from './site/HackerEarth'
+import HDU from './site/HDU'
+import Kattis from './site/Kattis'
+import POJ from './site/POJ'
+import USACO from './site/USACO'
+import UVa from './site/UVa'
+import { Language } from './types'
 
 export function getSite(config: Config) {
   const siteName = config.site
@@ -25,6 +28,9 @@ export function getSite(config: Config) {
   if (siteName === 'hdu') return new HDU(config)
   if (siteName === 'poj') return new POJ(config)
   if (siteName === 'uva') return new UVa(config)
+  if (siteName === 'he') return new HackerEarth(config)
+  if (siteName === 'cc') return new CodeChef(config)
+  if (siteName === 'aoj') return new AOJ(config)
   throw new Error(`unsupported site ${siteName}`)
 }
 

@@ -17,18 +17,19 @@
 - [x] [HDU](https://acm.hdu.edu.cn/)
 - [x] [POJ](http://poj.org/)
 - [x] [UVa](https://onlinejudge.org/index.php)
+- [x] [AOJ](https://onlinejudge.u-aizu.ac.jp)
+- [x] [CodeChef](https://www.codechef.com) (Mac only)
+- [x] [HackerEarth](https://www.hackerearth.com) (Mac only)
 - [ ] [洛谷](https://www.luogu.com.cn/)
 - [ ] [AcWing](https://www.acwing.com/)
 - [ ] [CH](http://www.contest-hunter.org/)
 - [ ] [GCJ](https://codingcompetitions.withgoogle.com/codejam)
-- [ ] [AOJ](https://judge.u-aizu.ac.jp/)
 - [ ] [SPOJ](https://www.spoj.com/)
 - [ ] [Timus](https://acm.timus.ru/)
-- [ ] [CodeChef](https://www.codechef.com/)
 - [ ] [IPSC](https://ipsc.ksp.sk/)
 - [ ] [Codility](https://app.codility.com/programmers/)
 - [ ] [Prologin](https://prologin.org/)
-- [ ] [LA](http://livearchive.onlinejudge.org/)
+- [ ] [LiveArchive](http://livearchive.onlinejudge.org/)
 - [ ] [SDUT](https://acm.sdut.edu.cn/onlinejudge3/)
 - [ ] [HackerRank](https://www.hackerrank.com)
 - [ ] [beecrowd (uri)](https://www.beecrowd.com.br)
@@ -62,7 +63,7 @@ $ npm i -g ya-oj-cli
 ## Login to OJ
 
 ```bash
-$ oj login --site=codeforces
+$ oj login --site=cf
 ```
 
 ## Create Solution

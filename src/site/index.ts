@@ -1,5 +1,5 @@
-import Project from "../project"
-import { Language, Problem } from "../types"
+import Project from '../project'
+import { Language, Problem } from '../types'
 
 export default interface Site {
   readonly name: string

@@ -1,5 +1,5 @@
-import Site from "../site";
-import { Language, Problem } from "../types";
+import Site from '../site'
+import { Language, Problem } from '../types'
 
 export default interface Project {
   getLanguage(): Language

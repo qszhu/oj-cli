@@ -1,10 +1,10 @@
-import fs from 'fs';
-import path from "path";
-import { promisify } from "util";
-import Project from ".";
-import { Language } from "../types";
-import { ensureDir } from "../utils";
-import BaseProject from "./BaseProject";
+import fs from 'fs'
+import path from 'path'
+import { promisify } from 'util'
+import Project from '.'
+import { Language } from '../types'
+import { ensureDir } from '../utils'
+import BaseProject from './BaseProject'
 
 export default class Kotlin extends BaseProject implements Project {
   constructor(rootDir: string) {

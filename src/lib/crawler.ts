@@ -8,29 +8,28 @@ const PROXY_SERVER = '127.0.0.1:8888'
 export async function newPageForCookies(url: string) {
   const launchOpts = {
     headless: false,
+    slowMo: 250,
     args: [
       `--proxy-server=${PROXY_SERVER}`
     ],
   }
   const browser = await puppeteer.launch(launchOpts)
   const page = await browser.newPage()
-  await page.goto(url)
-  let cookies
-  loop:
+  const timeout = 5 * 60 * 1000
+  await page.goto(url, { timeout, waitUntil: 'networkidle2' })
   while (true) {
-    await page.waitForNavigation()
-    cookies = await page.cookies()
-    for (const cookie of cookies) {
-      if (url.includes(cookie.domain)) break loop
-    }
+    await page.waitForNavigation({ timeout, waitUntil: 'networkidle2' })
+    if (new URL(page.url()).host === new URL(url).host) break
   }
+  const cookies = await page.cookies()
   await browser.close()
   return cookies
 }
 
 export async function newPage(
   cb: (page: puppeteer.Page, browser: puppeteer.Browser) => Promise<void>,
-  cookies: any[] = []
+  cookies: any[] = [],
+  slowMo = false
 ) {
   let launchOpts: any = {
     headless: false,
@@ -39,10 +38,10 @@ export async function newPage(
       `--proxy-server=${PROXY_SERVER}`
     ],
   }
+  if (slowMo) launchOpts.slowMo = 250
   if (DEBUG) {
     launchOpts = {
       headless: false,
-      // slowMo: 250,
       devtools: true,
       args: [`--window-size=${WIDTH},${HEIGHT}`],
     }
@@ -66,14 +65,14 @@ export async function newPage(
 export async function extractInfo<T>(
   url: string,
   cb: () => T,
-  cookies: any[] = []
+  cookies: any[] = [],
+  selectors: string[] = []
 ): Promise<T> {
   let res: any
 
   await newPage(async page => {
-    await page.goto(url, {
-      // waitUntil: 'networkidle2'
-    })
+    await page.goto(url)
+    await Promise.all(selectors.map(sel => page.waitForSelector(sel)))
 
     res = await page.evaluate(cb)
   }, cookies)

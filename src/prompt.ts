@@ -1,6 +1,6 @@
-import prompts from "prompts"
-import Site from "./site"
-import { Language } from "./types"
+import prompts from 'prompts'
+import Site from './site'
+import { Language } from './types'
 
 export async function promptSite() {
   const resp = await prompts([
@@ -16,7 +16,10 @@ export async function promptSite() {
         { title: 'POJ', value: 'poj' },
         { title: 'CSES', value: 'cses' },
         { title: 'HDU', value: 'hdu' },
-        { title: 'USACO', value: 'usaco' }
+        { title: 'USACO', value: 'usaco' },
+        { title: 'HackerEarth', value: 'he' },
+        { title: 'CodeChef', value: 'cc' },
+        { title: 'AOJ', value: 'aoj' }
       ]
     }
   ])

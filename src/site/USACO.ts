@@ -1,10 +1,10 @@
-import { convert } from "html-to-text";
-import Site from ".";
-import Config from "../config";
-import { extractInfo, newPage, submitFormForCookies } from "../lib/crawler";
-import Project from "../project";
-import { Language, Problem } from "../types";
-import BaseSite from "./BaseSite";
+import { convert } from 'html-to-text'
+import Site from '.'
+import Config from '../config'
+import { extractInfo, newPage, submitFormForCookies } from '../lib/crawler'
+import Project from '../project'
+import { Language, Problem } from '../types'
+import BaseSite from './BaseSite'
 
 function programTypeFromLang(lang: Language): string {
   switch (lang) {

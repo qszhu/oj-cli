@@ -1,9 +1,9 @@
-import Site from ".";
-import Config from "../config";
-import { newPage, submitFormForCookies } from "../lib/crawler";
-import Project from "../project";
-import { Language, Problem } from "../types";
-import BaseSite from "./BaseSite";
+import Site from '.'
+import Config from '../config'
+import { newPage, submitFormForCookies } from '../lib/crawler'
+import Project from '../project'
+import { Language, Problem } from '../types'
+import BaseSite from './BaseSite'
 
 function programTypeFromLang(lang: Language): string {
   switch (lang) {
