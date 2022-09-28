@@ -19,7 +19,8 @@ export async function promptSite() {
         { title: 'USACO', value: 'usaco' },
         { title: 'HackerEarth', value: 'he' },
         { title: 'CodeChef', value: 'cc' },
-        { title: 'AOJ', value: 'aoj' }
+        { title: 'AOJ', value: 'aoj' },
+        { title: 'アルゴ式', value: 'am'}
       ]
     }
   ])

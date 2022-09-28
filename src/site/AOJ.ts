@@ -80,7 +80,6 @@ export default class AOJ extends BaseSite implements Site {
         sourceCode: src
       }
     })
-    console.log(res.data)
 
     res = await axios.request({
       url: `${HOST_API}/self`,

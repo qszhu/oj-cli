@@ -20,6 +20,7 @@
 - [x] [AOJ](https://onlinejudge.u-aizu.ac.jp)
 - [x] [CodeChef](https://www.codechef.com) (Mac only)
 - [x] [HackerEarth](https://www.hackerearth.com) (Mac only)
+- [x] [アルゴ式](https://algo-method.com) (Mac only)
 - [ ] [洛谷](https://www.luogu.com.cn/)
 - [ ] [AcWing](https://www.acwing.com/)
 - [ ] [CH](http://www.contest-hunter.org/)

@@ -5,6 +5,7 @@ import Cpp from './project/Cpp'
 import Kotlin from './project/Kotlin'
 import TypeScript from './project/TypeScript'
 import Site from './site'
+import AlgoMethod from './site/AlgoMethod'
 import AOJ from './site/AOJ'
 import AtCoder from './site/AtCoder'
 import CodeChef from './site/CodeChef'
@@ -31,6 +32,7 @@ export function getSite(config: Config) {
   if (siteName === 'he') return new HackerEarth(config)
   if (siteName === 'cc') return new CodeChef(config)
   if (siteName === 'aoj') return new AOJ(config)
+  if (siteName === 'am') return new AlgoMethod(config)
   throw new Error(`unsupported site ${siteName}`)
 }
 
