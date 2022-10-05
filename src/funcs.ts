@@ -17,22 +17,24 @@ import Kattis from './site/Kattis'
 import POJ from './site/POJ'
 import USACO from './site/USACO'
 import UVa from './site/UVa'
+import YukiCoder from './site/YukiCoder'
 import { Language } from './types'
 
 export function getSite(config: Config) {
   const siteName = config.site
-  if (siteName === 'atc') return new AtCoder(config)
-  if (siteName === 'cf') return new CodeForces(config)
-  if (siteName === 'kattis') return new Kattis(config)
-  if (siteName === 'cses') return new CSES(config)
-  if (siteName === 'usaco') return new USACO(config)
-  if (siteName === 'hdu') return new HDU(config)
-  if (siteName === 'poj') return new POJ(config)
-  if (siteName === 'uva') return new UVa(config)
-  if (siteName === 'he') return new HackerEarth(config)
-  if (siteName === 'cc') return new CodeChef(config)
-  if (siteName === 'aoj') return new AOJ(config)
   if (siteName === 'am') return new AlgoMethod(config)
+  if (siteName === 'aoj') return new AOJ(config)
+  if (siteName === 'atc') return new AtCoder(config)
+  if (siteName === 'cc') return new CodeChef(config)
+  if (siteName === 'cf') return new CodeForces(config)
+  if (siteName === 'cses') return new CSES(config)
+  if (siteName === 'he') return new HackerEarth(config)
+  if (siteName === 'hdu') return new HDU(config)
+  if (siteName === 'kattis') return new Kattis(config)
+  if (siteName === 'poj') return new POJ(config)
+  if (siteName === 'usaco') return new USACO(config)
+  if (siteName === 'uva') return new UVa(config)
+  if (siteName === 'yc') return new YukiCoder(config)
   throw new Error(`unsupported site ${siteName}`)
 }
 

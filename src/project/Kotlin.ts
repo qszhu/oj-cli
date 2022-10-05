@@ -39,11 +39,12 @@ const TMPL = `import kotlin.system.exitProcess
 
 val br = System.\`in\`.bufferedReader()
 
-fun readString() = br.readLine()!!
+fun readLine(): String? = br.readLine()
+fun readString() = readLine()!!
 fun readInt() = readString().toInt()
 fun readLong() = readString().toLong()
 fun readDouble() = readString().toDouble()
-fun readStrings() = readString().split(" ")
+fun readStrings() = readLine()?.split(" ")?.filter { it.isNotEmpty() } ?: listOf()
 fun readInts() = readStrings().map { it.toInt() }.toIntArray()
 fun readLongs() = readStrings().map { it.toLong() }.toLongArray()
 fun readDoubles() = readStrings().map { it.toDouble() }.toDoubleArray()
@@ -52,23 +53,27 @@ fun readLines(n: Int) = Array(n) { readString() }
 const val MAX_STACK_SIZE: Long = 128 * 1024 * 1024
 
 fun main() {
-    val thread = Thread(null, {
-        // TODO
-        val n = readLong()
-
-        output(solve(n))
-    }, "solve", MAX_STACK_SIZE)
-    thread.setUncaughtExceptionHandler { _, e -> e.printStackTrace(); exitProcess(1) }
-    thread.start()
+  val thread = Thread(null, ::run, "solve", MAX_STACK_SIZE)
+  thread.setUncaughtExceptionHandler { _, e -> e.printStackTrace(); exitProcess(1) }
+  thread.start()
 }
 
-fun solve(n: Long): Long {
-    // TODO
-    return 0L
+fun run() {
+  // TODO
+  val t = readInt()
+  output((1..t).map {
+      val n = readLong()
+      solve(n)
+  })
 }
 
-fun output(res: Long) {
-    // TODO
-    println(res)
+fun solve(n: Long): LongArray {
+  // TODO
+  return LongArray(2)
 }
+
+fun output(res: List<LongArray>) =
+  // TODO
+  res.joinToString("\\n") { it.joinToString(" ") }
+      .apply { println(this) }
 `

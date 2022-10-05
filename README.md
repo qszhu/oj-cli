@@ -9,18 +9,19 @@
 
 # Supported Sites
 
-- [x] [AtCoder](https://atcoder.jp/)
-- [x] [CodeForces](https://codeforces.com/)
-- [x] [Kattis](https://open.kattis.com/)
-- [x] [CSES](https://cses.fi/)
-- [x] [USACO](http://usaco.org/)
-- [x] [HDU](https://acm.hdu.edu.cn/)
-- [x] [POJ](http://poj.org/)
-- [x] [UVa](https://onlinejudge.org/index.php)
-- [x] [AOJ](https://onlinejudge.u-aizu.ac.jp)
-- [x] [CodeChef](https://www.codechef.com) (Mac only)
-- [x] [HackerEarth](https://www.hackerearth.com) (Mac only)
 - [x] [アルゴ式](https://algo-method.com) (Mac only)
+- [x] [AOJ](https://onlinejudge.u-aizu.ac.jp)
+- [x] [AtCoder](https://atcoder.jp/)
+- [x] [CodeChef](https://www.codechef.com) (Mac only)
+- [x] [CodeForces](https://codeforces.com/)
+- [x] [CSES](https://cses.fi/)
+- [x] [HackerEarth](https://www.hackerearth.com) (Mac only)
+- [x] [HDU](https://acm.hdu.edu.cn/)
+- [x] [Kattis](https://open.kattis.com/)
+- [x] [POJ](http://poj.org/)
+- [x] [USACO](http://usaco.org/)
+- [x] [UVa](https://onlinejudge.org/index.php)
+- [x] [yukicoder](https://yukicoder.me/)
 - [ ] [洛谷](https://www.luogu.com.cn/)
 - [ ] [AcWing](https://www.acwing.com/)
 - [ ] [CH](http://www.contest-hunter.org/)
@@ -34,7 +35,6 @@
 - [ ] [SDUT](https://acm.sdut.edu.cn/onlinejudge3/)
 - [ ] [HackerRank](https://www.hackerrank.com)
 - [ ] [beecrowd (uri)](https://www.beecrowd.com.br)
-- [ ] [yukicoder](https://yukicoder.me/)
 
 # Supported Languages and Required Compilers
 

@@ -9,18 +9,19 @@ export async function promptSite() {
       name: 'site',
       message: 'choose a site:',
       choices: [
-        { title: 'AtCoder', value: 'atc' },
-        { title: 'CodeForces', value: 'cf' },
-        { title: 'Kattis', value: 'kattis' },
-        { title: 'UVa', value: 'uva' },
-        { title: 'POJ', value: 'poj' },
-        { title: 'CSES', value: 'cses' },
-        { title: 'HDU', value: 'hdu' },
-        { title: 'USACO', value: 'usaco' },
-        { title: 'HackerEarth', value: 'he' },
-        { title: 'CodeChef', value: 'cc' },
+        { title: 'アルゴ式', value: 'am' },
         { title: 'AOJ', value: 'aoj' },
-        { title: 'アルゴ式', value: 'am'}
+        { title: 'AtCoder', value: 'atc' },
+        { title: 'CodeChef', value: 'cc' },
+        { title: 'CodeForces', value: 'cf' },
+        { title: 'CSES', value: 'cses' },
+        { title: 'HackerEarth', value: 'he' },
+        { title: 'HDU', value: 'hdu' },
+        { title: 'Kattis', value: 'kattis' },
+        { title: 'POJ', value: 'poj' },
+        { title: 'USACO', value: 'usaco' },
+        { title: 'UVa', value: 'uva' },
+        { title: 'yukicoder', value: 'yc' }
       ]
     }
   ])
