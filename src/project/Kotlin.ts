@@ -72,8 +72,10 @@ fun solve(n: Long): LongArray {
   return LongArray(2)
 }
 
-fun output(res: List<LongArray>) =
+fun output(res: List<LongArray>) {
   // TODO
+  if (res.isEmpty()) return
   res.joinToString("\\n") { it.joinToString(" ") }
       .apply { println(this) }
+}
 `
