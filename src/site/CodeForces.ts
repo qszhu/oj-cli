@@ -6,11 +6,6 @@ import Project from '../project'
 import { Language, Problem } from '../types'
 import BaseSite from './BaseSite'
 
-const splitProblemId = (problemId: string): [number, string] => {
-  const n = problemId.match(/^(\d+)/)![0]
-  return [Number(n), problemId.substring(n.length)]
-}
-
 function programTypeFromLang(lang: Language): string {
   switch (lang) {
     case Language.Go: return '32'
@@ -25,6 +20,9 @@ function programTypeFromLang(lang: Language): string {
   throw new Error(`unsupported languge ${lang}`)
 }
 
+const problemUrlMapping = new Map([
+  ['273169', '${host}/edu/course/2/lesson/4/1/practice/contest/${contestId}/problem/${problemIndex}']
+])
 export default class CodeForces extends BaseSite implements Site {
   constructor(config: Config) {
     super('codeforces', 'https://codeforces.com', config)
@@ -48,9 +46,22 @@ export default class CodeForces extends BaseSite implements Site {
     throw new Error("Method not implemented.");
   }
 
+  private getProblemUrl(problemId: string): string {
+    const m = problemId.match(/^(\d+)/)
+    const contestId = m![0]
+    const problemIndex = problemId.substring(contestId.length)
+
+    if (!problemUrlMapping.has(contestId)) {
+      return `${this.host}/contest/${contestId}/problem/${problemIndex}`
+    }
+    return problemUrlMapping.get(contestId)!
+      .replace('${host}', this.host)
+      .replace('${contestId}', contestId)
+      .replace('${problemIndex}', problemIndex)
+  }
+
   async readProblem(problemId: string) {
-    const [contestId, problemIndex] = splitProblemId(problemId)
-    const url = `${this.host}/contest/${contestId}/problem/${problemIndex}`
+    const url = this.getProblemUrl(problemId)
 
     const getProblemDesc = () => {
       const problemSel = 'div.problem-statement'
@@ -77,7 +88,7 @@ export default class CodeForces extends BaseSite implements Site {
       }
     }
 
-    const { content, tests } = await extractInfo(url, getProblemDesc)
+    const { content, tests } = await extractInfo(url, getProblemDesc, this.config.getCookies(this.host))
     const textContent = convert(content, {
       wordwrap: 100
     })
@@ -95,13 +106,12 @@ export default class CodeForces extends BaseSite implements Site {
   }
 
   async submit(problemId: string, project: Project) {
-    const [contestId, problemIndex] = splitProblemId(problemId)
+    const url = this.getProblemUrl(problemId)
     const selectSel = 'select[name=programTypeId]'
     const uploadSel = 'input[name=sourceFile][type=file]'
     const submitSel = 'input[type=submit][value=Submit]'
     const errorSel = 'span.error'
 
-    const url = `${this.host}/contest/${contestId}/problem/${problemIndex}`
     await newPage(async page => {
       await page.setCookie(...this.config.getCookies(this.host))
       await page.goto(url, {
