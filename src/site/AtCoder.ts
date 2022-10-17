@@ -11,7 +11,11 @@ const contestMap = new Map([
   ['indeednow_2015_qualb', 'indeednow-qualb'],
   ['indeednow_2015_finala', 'indeednow-finala-open'],
   ['indeednow_2015_finalb', 'indeednow-finalb-open'],
-  ['code_festival_final', 'code-festival-2014-final']
+  ['code_festival_final', 'code-festival-2014-final'],
+  ['chokudai_S001', 'chokudai_S001'],
+  ['dfs', 'atc001'],
+  ['unionfind', 'atc001'],
+  ['fft', 'atc001'],
 ])
 
 const splitProblemId = (problemId: string): string[] => {
