@@ -34,7 +34,7 @@ export function getSite(config: Config) {
   if (siteName === 'poj') return new POJ(config)
   if (siteName === 'usaco') return new USACO(config)
   if (siteName === 'uva') return new UVa(config)
-  if (siteName === 'yc') return new YukiCoder(config)
+  if (siteName === 'ykc') return new YukiCoder(config)
   throw new Error(`unsupported site ${siteName}`)
 }
 

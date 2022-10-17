@@ -21,7 +21,7 @@ export async function promptSite() {
         { title: 'POJ', value: 'poj' },
         { title: 'USACO', value: 'usaco' },
         { title: 'UVa', value: 'uva' },
-        { title: 'yukicoder', value: 'yc' }
+        { title: 'yukicoder', value: 'ykc' }
       ]
     }
   ])
