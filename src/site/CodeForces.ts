@@ -1,4 +1,5 @@
 import { convert } from 'html-to-text'
+import path from 'path'
 import Site from '.'
 import Config from '../config'
 import { extractInfo, newPage, submitFormForCookies } from '../lib/crawler'
@@ -97,9 +98,10 @@ export default class CodeForces extends BaseSite implements Site {
   }
 
   getBuildCmdFromLang(lang: Language, srcFn: string, outFn: string): string {
+    const libDir = path.join(path.dirname(srcFn), 'lib')
     switch (lang) {
       case Language.Kotlin:
-        return `kotlinc -language-version 1.6 ${srcFn} -d ${outFn} -jvm-target 11`
+        return `kotlinc -language-version 1.6 ${srcFn} ${libDir} -d ${outFn} -jvm-target 11`
       default:
         throw new Error(`Unsupported language ${lang}`)
     }

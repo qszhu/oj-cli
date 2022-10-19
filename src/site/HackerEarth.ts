@@ -1,6 +1,7 @@
 import clipboardy from 'clipboardy'
 import fs from 'fs'
 import { convert } from 'html-to-text'
+import path from 'path'
 import Site from '.'
 import Config from '../config'
 import { extractInfo, newPage, newPageForCookies } from '../lib/crawler'
@@ -73,9 +74,10 @@ export default class HackerEarth extends BaseSite implements Site {
   }
 
   getBuildCmdFromLang(lang: Language, srcFn: string, outFn: string): string {
+    const libDir = path.join(path.dirname(srcFn), 'lib')
     switch (lang) {
       case Language.Kotlin:
-        return `kotlinc -language-version 1.5 ${srcFn} -d ${outFn}`
+        return `kotlinc -language-version 1.5 ${srcFn} ${libDir} -d ${outFn}`
       default:
         throw new Error(`Unsupported language ${lang}`)
     }

@@ -1,4 +1,5 @@
 import { convert } from 'html-to-text'
+import path from 'path'
 import Site from '.'
 import Config from '../config'
 import { extractInfo, newPage, newPageForCookies } from '../lib/crawler'
@@ -69,9 +70,10 @@ export default class YukiCoder extends BaseSite implements Site {
 
   // https://yukicoder.me/help/environments
   getBuildCmdFromLang(lang: Language, srcFn: string, outFn: string): string {
+    const libDir = path.join(path.dirname(srcFn), 'lib')
     switch (lang) {
       case Language.Kotlin:
-        return `kotlinc -language-version 1.6 ${srcFn} -d ${outFn}`
+        return `kotlinc -language-version 1.6 ${srcFn} ${libDir} -d ${outFn}`
       default:
         throw new Error(`Unsupported language ${lang}`)
     }

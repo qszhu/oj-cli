@@ -1,6 +1,7 @@
 import axios from 'axios'
 import fs from 'fs'
 import { convert } from 'html-to-text'
+import path from 'path'
 import Site from '.'
 import Config from '../config'
 import { newPage } from '../lib/crawler'
@@ -58,9 +59,10 @@ export default class AOJ extends BaseSite implements Site {
 
   // https://onlinejudge.u-aizu.ac.jp/system_info
   getBuildCmdFromLang(lang: Language, srcFn: string, outFn: string): string {
+    const libDir = path.join(path.dirname(srcFn), 'lib')
     switch (lang) {
       case Language.Kotlin:
-        return `kotlinc -language-version 1.4 ${srcFn} -d ${outFn}`
+        return `kotlinc -language-version 1.4 ${srcFn} ${libDir} -d ${outFn}`
       default:
         throw new Error(`Unsupported language ${lang}`)
     }
