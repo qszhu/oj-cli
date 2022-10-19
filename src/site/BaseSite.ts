@@ -7,4 +7,8 @@ export default abstract class BaseSite {
   getBuildCmdFromLang(lang: Language, srcFn: string, outFn: string): string {
     throw new Error('not implemented')
   }
+
+  getBuildOption(lang: Language) {
+    return {}
+  }
 }

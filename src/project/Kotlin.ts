@@ -1,10 +1,14 @@
 import fs from 'fs'
 import path from 'path'
 import Project from '.'
+import Site from '../site'
 import { Language } from '../types'
-import { ensureDir } from '../utils'
+import { ensureDir, runCmd } from '../utils'
 import BaseProject from './BaseProject'
 
+export class KotlinBuildOptions {
+  constructor(public packJar = false) { }
+}
 export default class Kotlin extends BaseProject implements Project {
   constructor(rootDir: string) {
     super(rootDir, Language.Kotlin)
@@ -22,7 +26,28 @@ export default class Kotlin extends BaseProject implements Project {
     return path.join(this.getBuildDir(), 'solution.kt')
   }
 
-  protected async afterBuild() {
+  async build(site: Site) {
+    const buildOption = site.getBuildOption(this.lang) as KotlinBuildOptions
+
+    const cmd = site.getBuildCmdFromLang(this.lang, this.getSourceFn(), this.getBuiltFn())
+    console.log(cmd)
+
+    const { err, stdout, stderr } = await runCmd(cmd)
+    if (err) throw new Error(stderr)
+
+    console.error(stderr)
+    if (buildOption.packJar) await this.packJar()
+    else await this.copySource()
+  }
+
+  async copySource() {
+    const srcFn = this.getSourceFn()
+    const dstFn = this.getSubmitFn()
+    ensureDir(path.dirname(dstFn))
+    fs.copyFileSync(srcFn, dstFn)
+  }
+
+  async packJar() {
     const srcFn = this.getBuiltFn()
     const b64str = fs.readFileSync(srcFn).toString('base64')
 
@@ -30,9 +55,25 @@ export default class Kotlin extends BaseProject implements Project {
     await ensureDir(path.dirname(outFn))
 
     fs.writeFileSync(outFn, `
-import java.io.ByteArrayInputStream
+import java.io.*
 import java.util.*
 import java.util.jar.JarInputStream
+
+@Throws(IOException::class)
+fun InputStream.readAllBytes(): ByteArray {
+    val bufLen = 4 * 0x400 // 4KB
+    val buf = ByteArray(bufLen)
+    var readLen: Int = 0
+
+    ByteArrayOutputStream().use { o ->
+        this.use { i ->
+            while (i.read(buf, 0, bufLen).also { readLen = it } != -1)
+                o.write(buf, 0, readLen)
+        }
+
+        return o.toByteArray()
+    }
+}
 
 class MemClassLoader(): ClassLoader() {
     private val classContents = mutableMapOf<String, ByteArray>()

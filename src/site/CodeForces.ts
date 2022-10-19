@@ -1,9 +1,9 @@
 import { convert } from 'html-to-text'
-import path from 'path'
 import Site from '.'
 import Config from '../config'
 import { extractInfo, newPage, submitFormForCookies } from '../lib/crawler'
 import Project from '../project'
+import { KotlinBuildOptions } from '../project/Kotlin'
 import { Language, Problem } from '../types'
 import BaseSite from './BaseSite'
 
@@ -97,11 +97,19 @@ export default class CodeForces extends BaseSite implements Site {
     return new Problem(problemId, textContent, tests)
   }
 
-  getBuildCmdFromLang(lang: Language, srcFn: string, outFn: string): string {
-    const libDir = path.join(path.dirname(srcFn), 'lib')
+  getBuildOption(lang: Language) {
     switch (lang) {
       case Language.Kotlin:
-        return `kotlinc -language-version 1.6 ${srcFn} ${libDir} -d ${outFn} -jvm-target 11`
+        return new KotlinBuildOptions()
+      default:
+        throw new Error(`Unsupported language ${lang}`)
+    }
+  }
+
+  getBuildCmdFromLang(lang: Language, srcFn: string, outFn: string): string {
+    switch (lang) {
+      case Language.Kotlin:
+        return `kotlinc -language-version 1.6 ${srcFn} -d ${outFn} -jvm-target 11`
       default:
         throw new Error(`Unsupported language ${lang}`)
     }

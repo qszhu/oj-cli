@@ -4,6 +4,7 @@ import Site from '.'
 import Config from '../config'
 import { extractInfo, newPage, submitFormForCookies } from '../lib/crawler'
 import Project from '../project'
+import { KotlinBuildOptions } from '../project/Kotlin'
 import { Language, Problem } from '../types'
 import BaseSite from './BaseSite'
 
@@ -110,6 +111,15 @@ export default class AtCoder extends BaseSite implements Site {
     switch (lang) {
       case Language.Kotlin:
         return `kotlinc -language-version 1.3 ${srcFn} ${libDir} -d ${outFn} -XXLanguage:+InlineClasses`
+      default:
+        throw new Error(`Unsupported language ${lang}`)
+    }
+  }
+
+  getBuildOption(lang: Language) {
+    switch (lang) {
+      case Language.Kotlin:
+        return new KotlinBuildOptions(true)
       default:
         throw new Error(`Unsupported language ${lang}`)
     }

@@ -7,6 +7,7 @@ export default interface Site {
   login(username: string, password: string): Promise<unknown>
   thirdPartyLogin(): Promise<unknown>
   readProblem(problemId: string): Promise<Problem>
+  getBuildOption(lang: Language): any
   getBuildCmdFromLang(lang: Language, srcFn: string, outFn: string): string
   submit(problemId: string, project: Project): Promise<unknown>
 }
