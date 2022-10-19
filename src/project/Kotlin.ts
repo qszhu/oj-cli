@@ -1,6 +1,5 @@
 import fs from 'fs'
 import path from 'path'
-import { promisify } from 'util'
 import Project from '.'
 import { Language } from '../types'
 import { ensureDir } from '../utils'
@@ -23,15 +22,64 @@ export default class Kotlin extends BaseProject implements Project {
     return path.join(this.getBuildDir(), 'solution.kt')
   }
 
-  protected async beforeBuild() {
-    const srcFn = this.getSourceFn()
+  protected async afterBuild() {
+    const srcFn = this.getBuiltFn()
+    const b64str = fs.readFileSync(srcFn).toString('base64')
+
     const outFn = this.getSubmitFn()
     await ensureDir(path.dirname(outFn))
-    await promisify(fs.copyFile)(srcFn, outFn)
+
+    fs.writeFileSync(outFn, `
+import java.io.ByteArrayInputStream
+import java.util.*
+import java.util.jar.JarInputStream
+
+class MemClassLoader(): ClassLoader() {
+    private val classContents = mutableMapOf<String, ByteArray>()
+
+    init {
+        val b64str = "${b64str}"
+        val bytes = Base64.getDecoder().decode(b64str)
+        val jis = JarInputStream(ByteArrayInputStream(bytes))
+        var entry = jis.nextJarEntry
+        while (entry != null) {
+            var name = entry.name
+            val size = entry.size.toInt()
+            if (name.endsWith(".class")) {
+                name = name.substringBeforeLast(".class")
+                if (size != -1) {
+                    val buf = ByteArray(size)
+                    jis.read(buf, 0, size)
+                    classContents[name] = buf
+                } else {
+                    classContents[name] = jis.readAllBytes()
+                }
+            }
+            entry = jis.nextJarEntry
+        }
+    }
+
+    override fun findClass(name: String?): Class<*> {
+        val buf = classContents[name]
+        return defineClass(name, buf, 0, buf!!.size)
+    }
+}
+
+fun main() {
+    val loader = MemClassLoader()
+    val klass = Class.forName("SolutionKt", true, loader)
+    val main = klass.getMethod("main")
+    try {
+        main.invoke(null)
+    } catch (e: Exception) {
+        println(e.cause)
+    }
+}
+`)
   }
 
   protected getRunCmd() {
-    return `java -jar ${this.getBuiltFn()}`
+    return `kotlin -classpath ${this.getBuiltFn()} SolutionKt`
   }
 }
 

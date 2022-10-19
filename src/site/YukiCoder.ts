@@ -71,7 +71,7 @@ export default class YukiCoder extends BaseSite implements Site {
   getBuildCmdFromLang(lang: Language, srcFn: string, outFn: string): string {
     switch (lang) {
       case Language.Kotlin:
-        return `kotlinc -language-version 1.6 ${srcFn} -include-runtime -d ${outFn}`
+        return `kotlinc -language-version 1.6 ${srcFn} -d ${outFn}`
       default:
         throw new Error(`Unsupported language ${lang}`)
     }

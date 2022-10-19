@@ -107,7 +107,7 @@ export default class AtCoder extends BaseSite implements Site {
   getBuildCmdFromLang(lang: Language, srcFn: string, outFn: string): string {
     switch (lang) {
       case Language.Kotlin:
-        return `kotlinc -language-version 1.3 ${srcFn} -include-runtime -d ${outFn} -XXLanguage:+InlineClasses`
+        return `kotlinc -language-version 1.3 ${srcFn} -d ${outFn} -XXLanguage:+InlineClasses`
       default:
         throw new Error(`Unsupported language ${lang}`)
     }

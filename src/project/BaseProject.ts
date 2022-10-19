@@ -98,7 +98,10 @@ export default abstract class BaseProject {
     if (err) throw new Error(stderr)
 
     console.error(stderr)
+    await this.afterBuild()
   }
+
+  protected async afterBuild() { }
 
   protected abstract getRunCmd(): string
 
