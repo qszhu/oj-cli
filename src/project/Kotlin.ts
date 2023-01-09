@@ -59,22 +59,6 @@ import java.io.*
 import java.util.*
 import java.util.jar.JarInputStream
 
-@Throws(IOException::class)
-fun InputStream.readAllBytes(): ByteArray {
-    val bufLen = 4 * 0x400 // 4KB
-    val buf = ByteArray(bufLen)
-    var readLen: Int = 0
-
-    ByteArrayOutputStream().use { o ->
-        this.use { i ->
-            while (i.read(buf, 0, bufLen).also { readLen = it } != -1)
-                o.write(buf, 0, readLen)
-        }
-
-        return o.toByteArray()
-    }
-}
-
 class MemClassLoader(): ClassLoader() {
     private val classContents = mutableMapOf<String, ByteArray>()
 
@@ -124,9 +108,11 @@ fun main() {
   }
 }
 
-const TMPL = `import kotlin.system.exitProcess
+const TMPL = `import java.io.PrintWriter
+import kotlin.system.exitProcess
 
 val br = System.\`in\`.bufferedReader()
+var out = PrintWriter(System.out.bufferedWriter())
 
 fun readLine(): String? = br.readLine()
 fun readString() = readLine()!!
@@ -141,30 +127,40 @@ fun readLines(n: Int) = Array(n) { readString() }
 
 const val MAX_STACK_SIZE: Long = 128 * 1024 * 1024
 
+class Solution {
+    // TODO
+    var t: Int = 0
+    var n: Long = 0
+    lateinit var res: List<Long>
+
+    fun run() {
+        // TODO
+        t = readInt()
+        (1..t).map {
+            n = readLong()
+            solve()
+            output()
+        }
+        out.flush()
+    }
+
+    fun solve() {
+        res = mutableListOf()
+    }
+
+    fun output() {
+        if (res.isEmpty()) return
+        out.println(res.joinToString(" "))
+    }
+
+    fun main() {
+        val thread = Thread(null, ::run, "solve", MAX_STACK_SIZE)
+        thread.setUncaughtExceptionHandler { _, e -> e.printStackTrace(); exitProcess(1) }
+        thread.start()
+    }
+}
+
 fun main() {
-  val thread = Thread(null, ::run, "solve", MAX_STACK_SIZE)
-  thread.setUncaughtExceptionHandler { _, e -> e.printStackTrace(); exitProcess(1) }
-  thread.start()
-}
-
-fun run() {
-  // TODO
-  val t = readInt()
-  output((1..t).map {
-      val n = readLong()
-      solve(n)
-  })
-}
-
-fun solve(n: Long): LongArray {
-  // TODO
-  return LongArray(2)
-}
-
-fun output(res: List<LongArray>) {
-  // TODO
-  if (res.isEmpty()) return
-  res.joinToString("\\n") { it.joinToString(" ") }
-      .apply { println(this) }
+    Solution().main()
 }
 `

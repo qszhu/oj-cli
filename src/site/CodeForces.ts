@@ -16,7 +16,7 @@ function programTypeFromLang(lang: Language): string {
     case Language.Java: return '60'
     case Language.Python: return '70'
     case Language.Rust: return '75'
-    case Language.Kotlin: return '77'
+    case Language.Kotlin: return '83'
   }
   throw new Error(`unsupported languge ${lang}`)
 }
@@ -109,7 +109,7 @@ export default class CodeForces extends BaseSite implements Site {
   getBuildCmdFromLang(lang: Language, srcFn: string, outFn: string): string {
     switch (lang) {
       case Language.Kotlin:
-        return `kotlinc -language-version 1.6 ${srcFn} -d ${outFn} -jvm-target 11`
+        return `kotlinc -language-version 1.7 ${srcFn} -d ${outFn} -jvm-target 11`
       default:
         throw new Error(`Unsupported language ${lang}`)
     }

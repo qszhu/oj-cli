@@ -14,10 +14,16 @@ const contestMap = new Map([
   ['indeednow_2015_finala', 'indeednow-finala-open'],
   ['indeednow_2015_finalb', 'indeednow-finalb-open'],
   ['code_festival_final', 'code-festival-2014-final'],
+  ['sumitb2019', 'sumitrust2019'],
   ['chokudai_S001', 'chokudai_S001'],
   ['dfs', 'atc001'],
   ['unionfind', 'atc001'],
   ['fft', 'atc001'],
+])
+
+const problemMap = new Map([
+  ['tenka1_2019_a', 'tenka1-2019-beginner'],
+  ['tenka1_2019_b', 'tenka1-2019-beginner']
 ])
 
 const splitProblemId = (problemId: string): string[] => {
@@ -25,7 +31,8 @@ const splitProblemId = (problemId: string): string[] => {
   let contestId = problemId.substring(0, i)
   const taskId = problemId.substring(i + 1)
 
-  if (contestMap.has(contestId)) contestId = contestMap.get(contestId)!
+  if (problemMap.has(problemId)) contestId = problemMap.get(problemId)!
+  else if (contestMap.has(contestId)) contestId = contestMap.get(contestId)!
   else contestId = contestId.replace(/_/g, '-')
 
   return [contestId, taskId]
@@ -110,7 +117,8 @@ export default class AtCoder extends BaseSite implements Site {
     const libDir = path.join(path.dirname(srcFn), 'lib')
     switch (lang) {
       case Language.Kotlin:
-        return `kotlinc -language-version 1.3 ${srcFn} ${libDir} -d ${outFn} -XXLanguage:+InlineClasses`
+        // return `kotlinc -language-version 1.3 ${srcFn} ${libDir} -d ${outFn} -XXLanguage:+InlineClasses`
+        return `kotlinc -language-version 1.3 ${srcFn} -d ${outFn} -XXLanguage:+InlineClasses`
       default:
         throw new Error(`Unsupported language ${lang}`)
     }

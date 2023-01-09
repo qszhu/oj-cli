@@ -3,7 +3,8 @@ import puppeteer from 'puppeteer'
 const WIDTH = 1280, HEIGHT = 1280
 const DEBUG = Boolean(process.env.DEBUG_CRAWLER)
 
-const PROXY_SERVER = '127.0.0.1:8888'
+const PROXY_SERVER = 'http://127.0.0.1:8888'
+// const PROXY_SERVER = 'socks5://127.0.0.1:1080'
 
 export async function newPageForCookies(url: string) {
   const launchOpts = {

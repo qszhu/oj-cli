@@ -6,6 +6,7 @@ import Site from '.'
 import Config from '../config'
 import { newPage } from '../lib/crawler'
 import Project from '../project'
+import { KotlinBuildOptions } from '../project/Kotlin'
 import { Language, Problem } from '../types'
 import BaseSite from './BaseSite'
 
@@ -62,7 +63,35 @@ export default class AOJ extends BaseSite implements Site {
     const libDir = path.join(path.dirname(srcFn), 'lib')
     switch (lang) {
       case Language.Kotlin:
-        return `kotlinc -language-version 1.4 ${srcFn} ${libDir} -d ${outFn}`
+        /*
+        // TODO: configurable libraryjars path
+        return `\
+kotlinc -language-version 1.4 -jvm-target 1.8 ${srcFn} ${libDir} -d ${outFn} && \
+proguard.sh \
+-injars ${outFn} \
+-outjars out.jar \
+-libraryjars /usr/local/Cellar/kotlin/1.7.21/libexec/lib \
+-libraryjars \`/usr/libexec/java_home\` \
+-dontoptimize \
+-dontobfuscate \
+-target 1.8 \
+-keepkotlinmetadata \
+-keep "class SolutionKt { \
+  public static void main(...); \
+}" && \
+mv out.jar ${outFn} \
+`
+*/
+      return `kotlinc -language-version 1.4 ${srcFn} -d ${outFn}`
+      default:
+        throw new Error(`Unsupported language ${lang}`)
+    }
+  }
+
+  getBuildOption(lang: Language) {
+    switch (lang) {
+      case Language.Kotlin:
+        return new KotlinBuildOptions(true)
       default:
         throw new Error(`Unsupported language ${lang}`)
     }

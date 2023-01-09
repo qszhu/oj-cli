@@ -63,7 +63,7 @@ export default abstract class BaseProject {
 
   private async saveTestFiles(problem: Problem) {
     return Promise.all([...problem.tests.entries()]
-      .map(([i, { input, output }]) => this.writeTestToFile(i, input, output)))
+      .map(([i, { input, output }]) => this.writeTestToFile(i, input || '', output || '')))
   }
 
   protected abstract getSrcTemplate(): string
