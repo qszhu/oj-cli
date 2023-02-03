@@ -9,6 +9,7 @@ export enum Language {
   Dart = 'dart',
   Haskell = 'hs',
   TypeScript = 'ts',
+  Nim = 'nim'
 }
 
 export class TestCase {

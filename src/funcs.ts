@@ -3,6 +3,7 @@ import prompts from 'prompts'
 import Config from './config'
 import Cpp from './project/Cpp'
 import Kotlin from './project/Kotlin'
+import Nim from './project/Nim'
 import TypeScript from './project/TypeScript'
 import Site from './site'
 import AlgoMethod from './site/AlgoMethod'
@@ -43,6 +44,7 @@ export function getLang(config: Config) {
   if (lang === 'cpp') return Language.Cpp
   if (lang === 'kotlin') return Language.Kotlin
   if (lang === 'typescript') return Language.TypeScript
+  if (lang === 'nim') return Language.Nim
   throw new Error(`unsupported language ${lang}`)
 }
 
@@ -65,6 +67,7 @@ function createProject(lang: Language, rootDir: string) {
     case Language.Cpp: return new Cpp(rootDir)
     case Language.Kotlin: return new Kotlin(rootDir)
     case Language.TypeScript: return new TypeScript(rootDir)
+    case Language.Nim: return new Nim(rootDir)
   }
   throw new Error(`unsupported project for language ${lang}`)
 }

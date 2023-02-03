@@ -22,6 +22,7 @@ const contestMap = new Map([
 ])
 
 const problemMap = new Map([
+  ['practice_1', 'abs'],
   ['tenka1_2019_a', 'tenka1-2019-beginner'],
   ['tenka1_2019_b', 'tenka1-2019-beginner']
 ])
@@ -49,6 +50,7 @@ function programTypeFromLang(lang: Language): string {
     case Language.JavaScript:
     case Language.TypeScript: return '4030'
     case Language.Kotlin: return '4032'
+    case Language.Nim: return '4036'
     case Language.Rust: return '4050'
   }
   throw new Error(`unsupported languge ${lang}`)
@@ -119,6 +121,8 @@ export default class AtCoder extends BaseSite implements Site {
       case Language.Kotlin:
         // return `kotlinc -language-version 1.3 ${srcFn} ${libDir} -d ${outFn} -XXLanguage:+InlineClasses`
         return `kotlinc -language-version 1.3 ${srcFn} -d ${outFn} -XXLanguage:+InlineClasses`
+      case Language.Nim:
+        return `nim cpp -d:release --opt:speed --multimethods:on --warning[SmallLshouldNotBeUsed]:off --hints:off -o:${outFn} ${srcFn}`
       default:
         throw new Error(`Unsupported language ${lang}`)
     }
